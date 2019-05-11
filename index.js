@@ -4,7 +4,7 @@ const source = 'SOURCE';
 const destination = 'DESTINATION';
 
 console.log("Backup server running");
-console.log("Drop a few files in SOURCE folder");
+console.log("Drop/change/rename/delete a few files in SOURCE folder");
 
 var someData;
 
@@ -18,10 +18,9 @@ watch.createMonitor(source, (monitor) =>{
     });
 
     monitor.on("changed", (source, curr, prev) => {
-        console.log("on changed");
+        const actualFileNamePath = parseFilename(source);
+        fs.copyFileSync(source, actualFileNamePath);
         console.log("CHANGED: " + source);
-        console.log("CHANGED: " + curr);
-        console.log("CHANGED: " + prev);
     });
 
     monitor.on("removed", (f, stat) =>{
