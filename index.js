@@ -6,8 +6,6 @@ const destination = 'DESTINATION';
 console.log("Backup server running");
 console.log("Drop/change/rename/delete a few files in SOURCE folder");
 
-var someData;
-
 watch.createMonitor(source, (monitor) =>{
     monitor.files[source];
 
@@ -24,7 +22,6 @@ watch.createMonitor(source, (monitor) =>{
     });
 
     monitor.on("removed", (f, stat) =>{
-        console.log("on remove");
         const filePathAndNameToDelete = parseFilename(f);
         fs.unlink(filePathAndNameToDelete, (err) =>{
             if(err){
