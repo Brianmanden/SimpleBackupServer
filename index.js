@@ -25,10 +25,10 @@ watch.createMonitor(source, (monitor) =>{
         const filePathAndNameToDelete = parseFilename(f);
         fs.unlink(filePathAndNameToDelete, (err) =>{
             if(err){
-                //throw err;
                 console.log("Uhh ohh ... something went wrong: " + err);
+            }else{
+                console.log("DELETED: " + filePathAndNameToDelete);
             }
-            console.log("DELETED: " + filePathAndNameToDelete);
         });
     });
 
